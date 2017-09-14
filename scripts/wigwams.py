@@ -224,7 +224,7 @@ def singlemoduletest(corrgenes, singleset, comb, singlepvals, deg_df, degconds):
 	overlap = holder[np.sum(holder,axis=1)==len(comb)].index.tolist()
 	#the seed gene invariably shows up in the overlap, account for that by shifting by 1
 	#(p-values start at an overlap of 0, which is essentially what we're seeing in that case)
-	return (overlap, singlepvals[len(overlap)-1])
+	return (overlap, singlepvals[max(0,len(overlap)-1)])
 
 def singlemining(seed, expr_df, deg_df, sets, alpha, corrnet, pvals, legacy):
 	'''
